@@ -1,0 +1,8 @@
+LogViewer/bin
+LogViewer/packages
+LogViewer/obj
+LogViewer.Test/bin
+LogViewer.Test/packages
+LogViewer.Test/obj
+.suo
+.vs
