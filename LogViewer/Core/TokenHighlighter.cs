@@ -29,15 +29,19 @@ namespace LogViewer.Core
                     {
                         foreach (var token in configuration.Tokens)
                         {
-                            var match = token.Regex.Match(textStartPosition.GetTextInRun(LogicalDirection.Forward));
-                            var textrange = new TextRange(textStartPosition.GetPositionAtOffset(match.Index, LogicalDirection.Forward), textStartPosition.GetPositionAtOffset(match.Index + match.Length, LogicalDirection.Backward));
+                            //string runText = textStartPosition.GetTextInRun(LogicalDirection.Forward);
+                            //var match = token.Regex.Match(runText);
+                            //var textrange = new TextRange(textStartPosition.GetPositionAtOffset(match.Index, LogicalDirection.Forward), textStartPosition.GetPositionAtOffset(match.Index + match.Length, LogicalDirection.Backward));
 
-                            foreach (var style in token.Styles)
+                            //foreach (var style in token.Styles)
+                            //{
+                            //    textrange.ApplyPropertyValue(style.Property, style.Value);
+                            //}
+                            var textRange = token.Highlight(textStartPosition);
+                            if (textRange != null)
                             {
-                                textrange.ApplyPropertyValue(style.Property, style.Value);
+                                textStartPosition = textRange.End;
                             }
-
-                            textStartPosition = textrange.End;
                         }
                     }
                     textStartPosition = textStartPosition.GetNextContextPosition(LogicalDirection.Forward);

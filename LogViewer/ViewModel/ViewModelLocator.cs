@@ -17,11 +17,8 @@ using GalaSoft.MvvmLight.Ioc;
 using LogViewer.Core;
 using LogViewer.Services;
 using LogViewer.Services.Implementation;
+using LogViewer.Tokens;
 using System.Collections.Generic;
-using System.Text.RegularExpressions;
-using System.Windows;
-using System.Windows.Documents;
-using System.Windows.Media;
 
 namespace LogViewer.ViewModel
 {
@@ -55,14 +52,11 @@ namespace LogViewer.ViewModel
 
         public TokenConfiguration InitializeTokens()
         {
-            var levelToken = new Token(new Regex("(info|error|warn|debug)", RegexOptions.Compiled | RegexOptions.IgnoreCase));
-            levelToken.Styles = new List<TokenStyle>
+            return new TokenConfiguration(new List<Token>
             {
-                new TokenStyle(TextElement.ForegroundProperty, new SolidColorBrush(Colors.Red)),
-                new TokenStyle(TextElement.FontWeightProperty, FontWeights.Bold)
-            };
-
-            return new TokenConfiguration(new List<Token> { levelToken });
+                new LogLevelToken(),
+                new DateToken()
+            });
         }
 
         public static void Cleanup()

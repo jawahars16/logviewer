@@ -72,10 +72,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Core\LogCancelException.cs" />
-    <Compile Include="Core\LogFileChangedEventArgs.cs" />
-    <Compile Include="Core\LogFileChangedHandler.cs" />
-    <Compile Include="Core\RichTextBoxHelper.cs" />
+    <Compile Include="Common\LogCancelException.cs" />
+    <Compile Include="Common\LogFileChangedEventArgs.cs" />
+    <Compile Include="Common\LogFileChangedHandler.cs" />
+    <Compile Include="Common\RichTextBoxHelper.cs" />
     <Compile Include="Core\Token.cs" />
     <Compile Include="Core\TokenConfiguration.cs" />
     <Compile Include="Core\TokenHighlighter.cs" />
@@ -84,6 +84,8 @@
     <Compile Include="Services\IFileWatcher.cs" />
     <Compile Include="Services\Implementation\FileOpenService.cs" />
     <Compile Include="Services\Implementation\FileWatcher.cs" />
+    <Compile Include="Tokens\DateToken.cs" />
+    <Compile Include="Tokens\LogLevelToken.cs" />
     <Compile Include="ViewModel\LogViewModel.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="ViewModel\ViewModelLocator.cs" />

@@ -1,17 +1,27 @@
 ﻿using System.Collections.Generic;
-using System.Text.RegularExpressions;
+using System.Windows.Documents;
 
 namespace LogViewer.Core
 {
-    public class Token
+    public abstract class Token
     {
-        public Token(Regex regex)
+        protected abstract TextRange Find(TextPointer textStartPosition);
+
+        protected abstract List<TokenStyle> GetStyles(string word);
+
+        public TextRange Highlight(TextPointer textStartPosition)
         {
-            Regex = regex;
+            var textRange = Find(textStartPosition);
+
+            if (textRange != null)
+            {
+                foreach (var style in GetStyles(textRange.Text))
+                {
+                    textRange.ApplyPropertyValue(style.Property, style.Value);
+                }
+            }
+
+            return textRange;
         }
-
-        public Regex Regex { get; set; }
-
-        public List<TokenStyle> Styles { get; set; }
     }
 }

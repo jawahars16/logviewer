@@ -23,7 +23,7 @@ namespace LogViewer.ViewModel
         public string LatestLog
         {
             get { return latestLog; }
-            set { latestLog = value; RaisePropertyChanged("LatestLog"); }
+            set { latestLog = value; RaisePropertyChanged(); }
         }
 
         public string Title
